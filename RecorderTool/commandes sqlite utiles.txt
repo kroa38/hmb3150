@@ -1,0 +1,88 @@
+commande sqlite3 a utiliser:
+
+****************************************************************************************
+retourne le timestamp:
+
+sqlite3 hmb3.db "SELECT strftime('%s','now','localtime')"
+****************************************************************************************
+inserer 
+insert ici la valeur 2013 dans le champ date_year de la table timer_record_table
+
+sqlite3 hmb3.db "INSERT INTO timer_record_table (date_year) values(2013)"
+
+insere le time stamp dans le champ datestamp
+sqlite3 hmb3.db "INSERT INTO timer_record_table (timestamp_start) SELECT strftime('%s','now','localtime')"
+
+****************************************************************************************
+remplacer
+remplace ici date_year par 2044 au point d'entré 6
+
+sqlite3 hmb3.db "REPLACE INTO timer_record_table (ID,date_year) values(6,2044)"
+****************************************************************************************
+delete
+
+delete toutes les entrées de la base timer_record_table
+sqlite3 hmb3.db "DELETE FROM timer_record_table"
+
+efface la ligne dont l'ID est 4
+sqlite3 hmb3.db "DELETE FROM timer_record_table WHERE ID = 4"
+****************************************************************************************
+affiche la table
+affche uniquement la table timer_record_table de la base hmb3.db
+sqlite3 hmb3.db "SELECT * FROM timer_record_table"
+****************************************************************************************
+dump
+dump toute la base de donnée
+sqlite3 hmb3.db ".dump"
+****************************************************************************************
+
+date
+retourne la date au format : 2012-01-12 14:40:12
+
+sqlite3 hmb3.db "SELECT datetime('now')"
+
+
+retourne la date au format timestamp avec heure locale
+sqlite3 hmb3.db  "SELECT strftime('%s','2012-11-12 10:49:27','localtime')"
+
+retourne la date au format timestamp avec heure UTC (utilisé dans  la base au lieu de localtime) 
+année:mois:jour heure:minutes:secondes
+sqlite3 hmb3.db  "SELECT strftime('%s','2012-11-12 10:49:27','UTC')"
+****************************************************************************************
+compter
+
+sqlite3 "hmb3.db" "select ID,count(ID) from timer_record_table"
+retourne le dernier Id et le nombre d'enregistrements
+
+sqlite3 "hmb3.db" "select ID from timer_record_table"
+retourne la liste des numeros ID d'enregistrements  
+
+sqlite$ sqlite3 "hmb3.db" "select count(ID) from timer_record_table"
+retourne le nombre d'enregistrements
+****************************************************************************************
+
+données utilisées dans la base
+
+				$arrRecData["datestamp"]=0;								// noch nicht festgelegt
+				$arrRecData["date"] = $_POST["recLoop"];				// noch nicht festgelegt
+				$arrRecData["date_year"] = $_POST["year"];				// Jahr der Aufnahme
+				$arrRecData["date_month"] = $_POST["month"];			// Monat der Aufnahme
+				$arrRecData["date_day"] = $_POST["day"];				// Tag der Aufnahme
+				$arrRecData["start_hour"] = $_POST["recFromHour"];		// Start der Aufnahme in Stunden
+				$arrRecData["start_minute"] = $_POST["recFromMin"];		// Start der Aufnahme in Minuten
+				$arrRecData["length_hour"] = $_POST["recTimeHour"];		// Dauer der Aufnahem in Stunden
+				$arrRecData["length_minute"] = $_POST["recTimeMins"];	// Dauer der Aufnahme in Minuten
+				$arrRecData["source"] = $_POST["source"];				// Quelle der Aufnahme 10=DTV
+				if(!isset($_POST["channel"])){ $arrRecData["channel"] = 1; }else{ $arrRecData["channel"] = $_POST["channel"]; }
+				if(!isset($_POST["quality"])){ $arrRecData["quality"] = 7; }else{ $arrRecData["quality"] = $_POST["quality"]; }
+				$arrRecData["target"] = $_POST["target"];				// Speicherort der Aufnahme Standard = 0
+				$arrRecData["SAP"] = 0;									// KA
+				$arrRecData["timestamp_start"] = $timestamp_start;		// berechnung der startzeit 1970
+				$arrRecData["timestamp_offset"] = $timestamp_offset;	// berechnung der ka
+				$arrRecData["enable"] = $_POST["enabled"];				// Standard auf 0 sonst wird box nicht gestartet
+				$arrRecData["lock"] = 0;								// aufnahme läuft = 1
+				$arrRecData["schedule_type"] = 0;						// Art der Aufnahme einmal/täglich/wöchentlich
+				$arrRecData["event_id"] = -1;							// ka
+				$arrRecData["user_id"] = 0;								// Standard = 0
+				$arrRecData["user_string"] = "";						// ka
+				

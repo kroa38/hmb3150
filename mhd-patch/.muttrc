@@ -1,0 +1,2 @@
+set sendmail="/opt/bin/msmtp"
+set copy=no

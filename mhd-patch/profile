@@ -1,0 +1,72 @@
+# /etc/profile
+
+# System wide environment and startup programs, for login setup
+# Functions and aliases go in /etc/bashrc
+
+pathmunge () {
+	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+	   if [ "$2" = "after" ] ; then
+	      PATH=$PATH:$1
+	   else
+	      PATH=$1:$PATH
+	   fi
+	fi
+}
+
+# Path manipulation
+if [ `id -u` = 0 ]; then
+	pathmunge /sbin
+	pathmunge /usr/sbin
+	pathmunge /usr/local/sbin
+	pathmunge /opt/bin
+	pathmunge /opt/sbin
+	pathmunge /opt/usr/sbin
+fi
+
+pathmunge /usr/local/bin
+
+
+# No core files by default
+#ulimit -S -c 0 > /dev/null 2>&1
+#limit coredumpsize unlimited
+
+#USER="`id -un`"
+#LOGNAME=$USER
+#MAIL="/var/spool/mail/$USER"
+
+#NTPDATA='Europe--Paris,France--CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00'
+#NTPSERVER='ntp.imag.fr'
+#NTPZONE='CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00'
+#TZ='CET-1CEST-2,M3.5.0/02:00:00,M10.5.0/03:00:00'
+. /usr/local/etc/ntpupdate.sh profile
+HOSTNAME=`/bin/hostname`
+HISTSIZE=1000
+TERM=vt320
+
+export LD_LIBRARY_PATH="/lib:/usr/lib:/opt/lib"
+
+#if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ]; then
+#    INPUTRC=/etc/inputrc
+#fi
+
+#export PATH USER LOGNAME MAIL HOSTNAME HISTSIZE INPUTRC
+export PATH HOSTNAME HISTSIZE TERM
+#export TZ NTPDATA NTPSERVER NTPZONE
+
+#for i in /etc/profile.d/*.sh ; do
+#    if [ -r "$i" ]; then
+#    	. $i
+#    fi
+#done
+
+#unset i
+unset pathmunge
+#export TZ=CST+0:00:00
+
+
+alias open="eject /dev/cdroms/cdrom0"
+alias close="eject -t /dev/cdroms/cdrom0"
+alias ll="ls -al --color"
+
+ulimit -c unlimited
+
