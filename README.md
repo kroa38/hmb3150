@@ -1,4 +1,14 @@
-# hmb3150
+# hmb3150 patch code
+
+copy the original firmware in the directory 'Rebuild'
+run /Tmp/./decomp     -> this decompress the firmware
+run /mhdpatch/./patch   -> this patch the firmware
+run /Tmp/./comp   -> compress the firmware
+
+You must be root to run correctly the patch !
+
+Be carefull ! the  hyundai reboot if there is no network. (i have to fix this!)
+
 My Hyundai 3150 Recorder for DVB-T with IPKG, FTP server, SSH,Stunnel, Dropbear, aria2c, email.
 
 Don't forget to complete the file :
