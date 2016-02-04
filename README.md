@@ -17,6 +17,8 @@ in passwd  :  replace the password for root and other user with encrypted passwo
 in msmtrpr :  place the correct email after "from", place the correct user, and password
 in hook.sh : place your email after the "mutt -s" command 
 
+The packages can be installed only if the directory /tmp/hdd/root/opt exist !!!
+create it manually. 
 
 usefull package to install with the command > ipkg install name of package
 
