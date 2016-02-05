@@ -5,17 +5,17 @@
 #  
 # PREREQUIS
 
-# Les deux repertoires 'Rebuild' et 'mhdpatch' doivent �tre dans la meme racine
+# Les deux repertoires 'Rebuild' et 'mhdpatch' doivent être dans la meme racine
 
 # INSTALLATION
 
-# Copier le firmware original (C757) dans le r�pertoire 'Rebuild'
-# Se mettre ensuite dans le r�pertoire 'temp'
+# Copier le firmware original (C757) dans le répertoire 'Rebuild'
+# Se mettre ensuite dans le répertoire 'temp'
 # Lancer le script 'decomp' qui permet de decompresser le firmware
 # Revenir dans le repertoire 'mhdpatch' ou se trouve le fichier 'patch.sh' celui la meme
 # Lancer le script 'patch.sh'
-# Revenir ensuite dans le r�pertoire 'Rebuild/temp'
-# Lancer le script 'comp' qui va recomprimer le firmware modifi�
+# Revenir ensuite dans le répertoire 'Rebuild/temp'
+# Lancer le script 'comp' qui va recomprimer le firmware modifié
 # Copier le nouveau firmware modifier sur une clef usb
 # Faire l'installation du firmware sur votre HMB media
 
@@ -24,7 +24,7 @@
 # cela se fait en lancant le script 'ipkg_install.sh'  
 
 
-# Une fois IPKG install� vous pouvez manuellement rajouter les packages
+# Une fois IPKG installé vous pouvez manuellement rajouter les packages
 # que vous voulez en tapant la commande suivante.
 # ipkg -force-defaults install aria2  (ceci installera aria2c sur la box)
 # ipkg -force-defaults install vsftpd  (ceci installera vsftpd  sur la box) 
@@ -38,6 +38,18 @@
 
 echo "START......................................................................"
 
+echo "Copy firmware 757 to Rebuild Directory"
+cp -f ../fw_C757/install.img  ../Rebuild/.
+
+echo "Change to directory Tmp"
+cd ../Rebuild/Tmp/
+
+echo "Uncompress firmware 757"
+./decomp.sh
+
+echo "Change to directory mhd_patch"
+cd ../../mhd-patch/
+
 echo "Ajout de nouveaux fichiers"
 
 echo "Copie de lynx.cfg  dans yaffs2_1/usr/local/etc "
@@ -49,8 +61,8 @@ cp -f lynx_bookmarks.html ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
 echo "Creation de la directory .authenticate dans /usr/local/etc (email)"
 mkdir ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.authenticate
 
-echo "Copie de cap.pem  dans /usr/local/etc/.authenticate"
-cp -f cap.pem ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.authenticate/
+echo "Copie de ca.pem  dans /usr/local/etc/.authenticate"
+cp -f ca.pem ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.authenticate/
 
 echo "Copie de .msmtprc dans yaffs2_2 (fonction email)"
 cp -f .msmtprc ../Rebuild/install/package2/yaffs2_2/
@@ -105,7 +117,7 @@ cp -f hook.sh ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.aria2/
 
 echo "Fin ajout de nouveaux fichiers............................................"
 echo "  "
-echo "Déplacement des anciens scripts et fichiers de config pour accès RW......."
+echo "DÃ©placement des anciens scripts et fichiers de config pour accÃ¨s RW......."
 
 echo "Copie de profile dans /yaffs2_1/usr/local/etc"
 cp -f profile ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
@@ -137,18 +149,21 @@ cp -f inetd.conf ../Rebuild/install/package2/yaffs2_2/
 
 echo "Suppression de httpd.conf dans /etc"
 rm -f ../Rebuild/install/package2/yaffs2_1/etc/httpd.conf
+
 echo "Copie de httpd.conf dans /usr/local/etc/"
 cp -f httpd.conf ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
+
 echo "Copie de httpd.conf dans yaffs2_2"
 cp -f httpd.conf ../Rebuild/install/package2/yaffs2_2/
+
 echo "Creation des liens symbolique pour inetd.conf et httpd.conf"
-cd ../Rebuild/install/package2/yaffs2_1/etc
+cd ../Rebuild/install/package2/yaffs2_1/etc/
 ln -sf /usr/local/etc/inetd.conf inetd.conf
 ln -sf /usr/local/etc/httpd.conf httpd.conf
 cd ../../../../../mhd-patch/
 
 echo "Creation du lien symbolique pour /opt vers /tmp/hdd/root/opt"
-cd ../Rebuild/install/package2/yaffs2_1
+cd ../Rebuild/install/package2/yaffs2_1/
 ln -sf /tmp/hdd/root/opt opt
 cd ../../../../mhd-patch/
 
@@ -157,7 +172,7 @@ rm -f ../Rebuild/install/package2/yaffs2_1/etc/hostname
 echo "Copie de hostname dans yaffs2_2 "
 cp -f hostname ../Rebuild/install/package2/yaffs2_2/
 echo "Creation du lien symbolique pour hostname dans yaffs2_1/etc"
-cd ../Rebuild/install/package2/yaffs2_1/etc
+cd ../Rebuild/install/package2/yaffs2_1/etc/
 ln -sf /usr/local/etc/hostname  hostname
 cd ../../../../../mhd-patch/
 
@@ -172,7 +187,7 @@ cp -f hosts ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
 echo "Copie de hosts dans yaffs2_2/usr/local/etc/"
 cp -f hosts ../Rebuild/install/package2/yaffs2_2/
 echo "Creation du lien symbolique pour hosts dans yaffs2_1/etc"
-cd ../Rebuild/install/package2/yaffs2_1/etc
+cd ../Rebuild/install/package2/yaffs2_1/etc/
 ln -sf ../usr/local/etc/hosts  hosts
 cd ../../../../../mhd-patch/
 
@@ -183,7 +198,15 @@ echo "Changement des droits de tous les fichiers en 777"
 chmod -R 777 .*
 chmod -R 777 *
 
+echo "Change to directory Tmp"
+cd ../Rebuild/Tmp/
+
+echo "Compress firmware 757"
+./comp.sh
+
 echo "END........................................................................"
 
 exit 0;
+
+
 
