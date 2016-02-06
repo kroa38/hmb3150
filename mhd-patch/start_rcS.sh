@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 # on tue bftpd (hardcodé) pour pouvoir utiliser uniquement vsftpd
