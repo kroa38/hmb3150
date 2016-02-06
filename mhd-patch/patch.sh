@@ -5,17 +5,17 @@
 #  
 # PREREQUIS
 
-# Les deux repertoires 'Rebuild' et 'mhdpatch' doivent être dans la meme racine
+# Les deux repertoires 'Rebuild' et 'mhdpatch' doivent �tre dans la meme racine
 
 # INSTALLATION
 
-# Copier le firmware original (C757) dans le répertoire 'Rebuild'
-# Se mettre ensuite dans le répertoire 'temp'
+# Copier le firmware original (C757) dans le r�pertoire 'Rebuild'
+# Se mettre ensuite dans le r�pertoire 'temp'
 # Lancer le script 'decomp' qui permet de decompresser le firmware
 # Revenir dans le repertoire 'mhdpatch' ou se trouve le fichier 'patch.sh' celui la meme
 # Lancer le script 'patch.sh'
-# Revenir ensuite dans le répertoire 'Rebuild/temp'
-# Lancer le script 'comp' qui va recomprimer le firmware modifié
+# Revenir ensuite dans le r�pertoire 'Rebuild/temp'
+# Lancer le script 'comp' qui va recomprimer le firmware modifi�
 # Copier le nouveau firmware modifier sur une clef usb
 # Faire l'installation du firmware sur votre HMB media
 
@@ -23,7 +23,8 @@
 # il est necessaire de faire l'installation de IPKG
 # cela se fait en lancant le script 'ipkg_install.sh'  
 
-# Une fois IPKG installé vous pouvez manuellement rajouter les packages
+
+# Une fois IPKG install� vous pouvez manuellement rajouter les packages
 # que vous voulez en tapant la commande suivante.
 # ipkg -force-defaults install aria2  (ceci installera aria2c sur la box)
 # ipkg -force-defaults install vsftpd  (ceci installera vsftpd  sur la box) 
@@ -131,7 +132,7 @@ cp -f hook.sh ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.aria2/
 
 echo "Fin ajout de nouveaux fichiers............................................"
 echo "  "
-echo "DÃ©placement des anciens scripts et fichiers de config pour accÃ¨s RW......."
+echo "Déplacement des anciens scripts et fichiers de config pour accès RW......."
 
 echo "Copie de profile dans /yaffs2_1/usr/local/etc"
 cp -f profile ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
