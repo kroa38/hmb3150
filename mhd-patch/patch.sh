@@ -23,7 +23,6 @@
 # il est necessaire de faire l'installation de IPKG
 # cela se fait en lancant le script 'ipkg_install.sh'  
 
-
 # Une fois IPKG installé vous pouvez manuellement rajouter les packages
 # que vous voulez en tapant la commande suivante.
 # ipkg -force-defaults install aria2  (ceci installera aria2c sur la box)
@@ -37,6 +36,21 @@
 
 
 echo "START......................................................................"
+
+if [ -d ../Rebuild/install/ ]; then
+	echo "erase dir install"
+	rm -rf ../Rebuild/install/
+fi
+
+if [ -r ../Rebuild/install.img ]; then
+	echo "erase file install.img"
+	rm -rf ../Rebuild/install.img
+fi
+
+if [ -r ../Rebuild/install.img.old ]; then
+	echo "erase file install.img.old"
+	rm -rf ../Rebuild/install.img.old
+fi
 
 echo "Copy firmware 757 to Rebuild Directory"
 cp -f ../fw_C757/install.img  ../Rebuild/.
@@ -201,12 +215,10 @@ chmod -R 777 *
 echo "Change to directory Tmp"
 cd ../Rebuild/Tmp/
 
-echo "Compress firmware 757"
+echo "Compress new firmware"
 ./comp.sh
 
 echo "END........................................................................"
 
 exit 0;
-
-
 
