@@ -88,11 +88,11 @@ cp -f .muttrc ../Rebuild/install/package2/yaffs2_2/
 echo "Copie de start_rcS.sh dans yaffs2_2(script perso)"
 cp -f start_rcS.sh ../Rebuild/install/package2/yaffs2_2/
 
-echo "Creation de la directory stunnel dans yaffs2_1/usr/local/etc/"
-mkdir ../Rebuild/install/package2/yaffs2_1/usr/local/etc/stunnel
+echo "Copie de stunnel.pem dans yaffs2_1/usr/local/etc/"
+cp -f stunnel.conf ../Rebuild/install/package2/yaffs2_1/usr/local/etc
 
-echo "Copie de stunnel.pem dans yaffs2_1/usr/local/etc/stunnel"
-cp -f stunnel.pem ../Rebuild/install/package2/yaffs2_1/usr/local/etc/stunnel
+echo "Copie de stunnel.pem dans yaffs2_2"
+cp -f stunnel.conf ../Rebuild/install/package2/yaffs2_2/
 
 echo "Copie de stunnel.conf dans yaffs2_1/usr/local/etc/"
 cp -f stunnel.conf ../Rebuild/install/package2/yaffs2_1/usr/local/etc
@@ -132,7 +132,7 @@ cp -f hook.sh ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.aria2/
 
 echo "Fin ajout de nouveaux fichiers............................................"
 echo "  "
-echo "Déplacement des anciens scripts et fichiers de config pour accès RW......."
+echo "Deplacement des anciens scripts et fichiers de config pour acces RW......."
 
 echo "Copie de profile dans /yaffs2_1/usr/local/etc"
 cp -f profile ../Rebuild/install/package2/yaffs2_1/usr/local/etc/

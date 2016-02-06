@@ -14,6 +14,7 @@ fi;
 if [ ! -d /usr/local/etc/stunnel ];then
 mkdir /usr/local/etc/stunnel
 mv /usr/local/etc/stunnel.conf /usr/local/etc/stunnel/
+mv /usr/local/etc/stunnel.pem /usr/local/etc/stunnel/
 chown -R nobody:default /usr/local/etc/stunnel
 fi;
 
