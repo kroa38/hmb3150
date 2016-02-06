@@ -1,2 +1,4 @@
 #exlcude 
 *.img
+*.img.old
+
