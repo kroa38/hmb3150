@@ -85,6 +85,9 @@ cp -f .msmtprc ../Rebuild/install/package2/yaffs2_2/
 echo "Copie de .muttrc dans yaffs2_2 (fonction email)"
 cp -f .muttrc ../Rebuild/install/package2/yaffs2_2/
 
+echo "Copie de vsftpd.conf dans yaffs2_2(config vsftpd)"
+cp -f vsftpd.conf ../Rebuild/install/package2/yaffs2_2/
+
 echo "Copie de start_rcS.sh dans yaffs2_2(script perso)"
 cp -f start_rcS.sh ../Rebuild/install/package2/yaffs2_2/
 

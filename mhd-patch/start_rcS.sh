@@ -26,6 +26,11 @@ if [ ! -d /opt/log ];then
 mkdir /opt/log
 fi;
 
+#création des directory vsftp si pas présente
+if [ ! -d /opt/tmp/vsftp_secure_chroot_dir ];then
+mkdir /opt/tmp/vsftp_secure_chroot_dir
+fi;
+
 #reconnexion l'interface reseau si pas présente et remise à l'heure
 (
 sleep 240;
