@@ -44,6 +44,7 @@ HISTSIZE=1000
 TERM=vt320
 
 export LD_LIBRARY_PATH="/lib:/usr/lib:/opt/lib"
+export SSL_CERT_DIR="/usr/local/etc/ssl/certs"
 
 #if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ]; then
 #    INPUTRC=/etc/inputrc
