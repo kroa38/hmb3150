@@ -5,17 +5,17 @@
 #  
 # PREREQUIS
 
-# Les deux repertoires 'Rebuild' et 'mhdpatch' doivent être dans la meme racine
+# Les deux repertoires 'Rebuild' et 'mhdpatch' doivent Ãªtre dans la meme racine
 
 # INSTALLATION
 
-# Copier le firmware original (C757) dans le répertoire 'Rebuild'
-# Se mettre ensuite dans le répertoire 'temp'
+# Copier le firmware original (C757) dans le rÃ©pertoire 'Rebuild'
+# Se mettre ensuite dans le rÃ©pertoire 'temp'
 # Lancer le script 'decomp' qui permet de decompresser le firmware
 # Revenir dans le repertoire 'mhdpatch' ou se trouve le fichier 'patch.sh' celui la meme
 # Lancer le script 'patch.sh'
-# Revenir ensuite dans le répertoire 'Rebuild/temp'
-# Lancer le script 'comp' qui va recomprimer le firmware modifié
+# Revenir ensuite dans le rÃ©pertoire 'Rebuild/temp'
+# Lancer le script 'comp' qui va recomprimer le firmware modifiÃ©
 # Copier le nouveau firmware modifier sur une clef usb
 # Faire l'installation du firmware sur votre HMB media
 
@@ -24,7 +24,7 @@
 # cela se fait en lancant le script 'ipkg_install.sh'  
 
 
-# Une fois IPKG installé vous pouvez manuellement rajouter les packages
+# Une fois IPKG installÃ© vous pouvez manuellement rajouter les packages
 # que vous voulez en tapant la commande suivante.
 # ipkg -force-defaults install aria2  (ceci installera aria2c sur la box)
 # ipkg -force-defaults install vsftpd  (ceci installera vsftpd  sur la box) 
@@ -153,10 +153,16 @@ cp -f ipkg-cl ../Rebuild/install/package2/yaffs2_1/usr/local/bin/
 echo "Copie de ntpdate dans /usr/sbin"
 cp -f ntpdate ../Rebuild/install/package2/yaffs2_1/usr/sbin/
 
-echo "Remplacement de passwd dans  yaffs2_2"
+echo "Remplacement de passwd dans yaffs2_2"
 cp -f passwd ../Rebuild/install/package2/yaffs2_2/
 echo "Remplacement de passwd dans yaffs2_1/usr/local/etc"
 cp -f passwd ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
+
+echo "Remplacement de group dans yaffs2_2"
+cp -f group ../Rebuild/install/package2/yaffs2_2/
+echo "Remplacement de group dans yaffs2_1/usr/local/etc"
+cp -f group ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
+
 
 echo "Suppression de inetd.conf dans /etc"
 rm -f ../Rebuild/install/package2/yaffs2_1/etc/inetd.conf
