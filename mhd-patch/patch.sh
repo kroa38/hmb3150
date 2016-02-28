@@ -73,11 +73,8 @@ cp -f lynx.cfg ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
 echo "Copie de lynx_bookmarks.html  dans yaffs2_1/usr/local/etc "
 cp -f lynx_bookmarks.html ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
 
-echo "Creation de la directory .authenticate dans /usr/local/etc (email)"
-mkdir ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.authenticate
-
-echo "Copie de ca.pem  dans /usr/local/etc/.authenticate"
-cp -f ca.pem ../Rebuild/install/package2/yaffs2_1/usr/local/etc/.authenticate/
+echo "Copie de ca.pem  dans /usr/local/etc/"
+cp -f ca.pem ../Rebuild/install/package2/yaffs2_1/usr/local/etc/
 
 echo "Copie de .msmtprc dans yaffs2_2 (fonction email)"
 cp -f .msmtprc ../Rebuild/install/package2/yaffs2_2/
