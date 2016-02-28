@@ -18,6 +18,14 @@ mv /usr/local/etc/stunnel.pem /usr/local/etc/stunnel/
 chown -R nobody:default /usr/local/etc/stunnel
 fi;
 
+#création de la drectory .authenticate
+#pour le service emal msmtp tls et deplacement
+#des certifcats dedans
+if [ ! -d  /usr/local/etc/.authenticate ];then
+mkdir /usr/local/etc/.authenticate
+mv /usr/local/etc/ca.pem /usr/local/etc/.authenticate/
+fi;
+
 #création des directory tmp et log si pas présente
 if [ ! -d /opt/tmp ];then
 mkdir /opt/tmp
